@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KWK Interaktif — Mengenal Diri, Merencanakan Masa Depan</title>
+<style>
+:root{--bg:#0d1e38;--bg2:#13294b;--card:#172f55;--line:#27487a;--tx:#eef3fb;--mu:#9fb2d0;--gold:#f5c04a;--teal:#2fd6b5;--bt:#fff;--bs:#d9fbf2;--bx:#0d1e38;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef3fb;--bg2:#fff;--card:#fff;--line:#cfdcf0;--tx:#0d1e38;--mu:#52678a}}
+:root[data-theme="light"]{--bg:#eef3fb;--bg2:#fff;--card:#fff;--line:#cfdcf0;--tx:#0d1e38;--mu:#52678a}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif;min-height:100vh}
+.wrap{max-width:720px;margin:0 auto;padding:14px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--gold),#e8893a);display:grid;place-items:center;font-size:21px}
+h1{font-size:17px;margin:0}header small{color:var(--mu)}
+.steps{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:8px}
+.step{flex:1;min-width:86px;text-align:center;font-size:12px;padding:7px 5px;border-radius:12px;background:var(--bg2);border:1px solid var(--line);color:var(--mu);transition:.3s}
+.step.on{background:linear-gradient(135deg,var(--teal),#1a9d86);color:#04201b;border-color:transparent;font-weight:700}.step.done{color:var(--gold);border-color:var(--gold)}
+.bar{height:6px;border-radius:9px;background:var(--line);overflow:hidden;margin-bottom:12px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .4s}
+.stage{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(#8fd3ff 0%,#d6f1ff 55%,#a8dc7c 55%,#6fbf4a 100%);padding:12px 8px 0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.stage:before{content:"";position:absolute;left:-10%;right:-10%;top:52%;height:40px;border-radius:50%;background:#8fd05f;opacity:.7}
+.cloud{position:absolute;top:10px;width:60px;height:20px;border-radius:20px;background:#fff;opacity:.8;animation:drift 18s linear infinite}.cloud.b{top:40px;left:60%;animation-duration:26s}
+@keyframes drift{from{transform:translateX(-80px)}to{transform:translateX(420px)}}
+.col{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-width:0}
+.say{position:relative;min-height:116px;max-height:190px;overflow:auto;background:var(--bt);color:var(--bx);border-radius:18px;padding:10px 12px;font-size:14px;line-height:1.4;box-shadow:0 6px 16px #0003;margin-bottom:14px;opacity:.0;transform:scale(.8);transition:.25s;transform-origin:bottom}
+.say.show{opacity:1;transform:none}.say.s{background:var(--bs)}
+.say:after{content:"";position:absolute;bottom:-9px;left:34px;border:10px solid transparent;border-bottom:0;border-top-color:var(--bt)}
+.say.s:after{border-top-color:var(--bs);left:auto;right:34px}
+.nm{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#2a5ba3;display:block;margin-bottom:2px}.say.s .nm{color:#13806c}
+.fig{position:relative;width:100%;max-width:170px;margin:0 auto;z-index:1}
+.fig svg{display:block;width:100%;height:auto;overflow:visible;transform-origin:50% 100%;animation:idle 3s ease-in-out infinite}
+.talk svg{animation:tuing 1.3s ease-in-out infinite}
+@keyframes idle{50%{transform:translateY(-3px) scale(1.01,.995)}}
+@keyframes tuing{0%,100%{transform:translateY(0) scale(1,1)}35%{transform:translateY(-5px) scale(.99,1.02)}65%{transform:translateY(0) scale(1.012,.99)}}
+.mouth{transform-box:fill-box;transform-origin:center}.talk .mouth{animation:mth .22s ease-in-out infinite alternate}
+@keyframes mth{from{transform:scale(1,.35)}to{transform:scale(1.15,1.7)}}
+.eye{transform-box:fill-box;transform-origin:center;animation:blink 4s infinite}@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.wave{opacity:0}.talk .wave{animation:wv .7s infinite}.talk .wave:nth-of-type(2){animation-delay:.2s}.talk .wave:nth-of-type(3){animation-delay:.4s}
+@keyframes wv{0%{opacity:0}40%{opacity:1}100%{opacity:0;transform:translateX(8px)}}
+.arm{transform-box:fill-box;transform-origin:0 0}.talk .arm{animation:wa 1s ease-in-out infinite alternate}@keyframes wa{to{transform:rotate(-7deg)}}
+.tag{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);background:#0d1e38cc;color:#fff;font-size:11px;padding:2px 10px;border-radius:99px;z-index:2;white-space:nowrap}
+.ctl{position:sticky;bottom:0;display:flex;gap:10px;padding:14px 0 6px;background:linear-gradient(transparent,var(--bg) 35%)}
+button{font:inherit;cursor:pointer;border:0;border-radius:14px;padding:13px 18px;font-weight:700}
+.go{flex:1;background:linear-gradient(135deg,var(--gold),#e8893a);color:#2b1700}.sec{background:var(--bg2);color:var(--tx);border:1px solid var(--line)}button:disabled{opacity:.5}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}.chip{padding:1px 8px;border-radius:99px;border:1px solid #9bb;font-size:12px;color:#456}.chip.ok{background:#2fd6b5;color:#04201b;border-color:transparent;font-weight:700}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:12px;font-size:13px}.info b{display:block;color:var(--gold);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.rapor{background:var(--card);border:1px solid var(--gold);border-radius:20px;padding:18px;margin-top:12px}.rapor h2{margin:0 0 4px;font-size:19px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-top:12px}.k{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:10px}.k b{display:block;font-size:18px;color:var(--teal)}.k span{font-size:12px;color:var(--mu)}
+#mus{display:none;position:fixed;right:14px;top:calc(12px + env(safe-area-inset-top,0px));z-index:20;width:46px;height:46px;border-radius:50%;padding:0;font-size:21px;background:linear-gradient(135deg,var(--gold),#e8893a);box-shadow:0 6px 18px #0005}.music{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 12px}.music summary{cursor:pointer;font-weight:700;font-size:14px}.music iframe{margin-top:10px;border-radius:12px;max-width:100%}.music a{color:var(--gold);font-size:13px}</style></head>
+<body><div class="wrap">
+<header><div class="logo">🎓</div><div><h1>Lembar Kerja Wali Kelas</h1><small>“Mengenal Diri, Merencanakan Masa Depan”</small></div></header>
+<div class="steps" id="steps"></div><div class="bar"><i id="bar"></i></div>
+<div class="stage"><div class="cloud"></div><div class="cloud b"></div>
+<div class="col"><div class="say" id="sayT"></div><div class="fig" id="figT"></div><span class="tag">👩‍🏫 Bu Guru</span></div>
+<div class="col"><div class="say s" id="sayS"></div><div class="fig" id="figS"></div><span class="tag">👩‍🎓 Faiza</span></div></div>
+<div class="ctl"><button class="sec" id="auto">▶ Auto</button><button class="go" id="next">Mulai percakapan →</button></div>
+<div id="out"></div>
+<details class="music" hidden><summary>🎵 Backsound</summary>
+
+<p style="margin:8px 0 0"><a href="https://open.spotify.com/track/6k2P15FqrM4SJonzplvA9l" target="_blank" rel="noopener">Buka di Spotify ↗</a> untuk mendengarkan lagu pilihanmu.</p></details>
+<div class="info"><div><b>Nama</b>Faiza Adina Palupi</div><div><b>Kelas / Absen</b>X-2 / 07</div><div><b>Panggilan</b>Faiza</div><div><b>Cita-cita</b>Engineer / Developer Game 🎮</div></div>
+</div>
+<script>
+function avatar(o){return `<svg viewBox="0 0 140 190" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="70" cy="186" rx="48" ry="5" fill="#0003"/>
+<path d="M30 190 Q34 118 70 112 Q106 118 110 190Z" fill="${o.dress}"/>
+<path d="M22 100 Q70 76 118 100 L124 150 Q70 170 16 150Z" fill="${o.hij}"/>
+<g class="arm"><ellipse cx="${o.hx}" cy="${o.hy}" rx="10" ry="9" fill="#ffd9b8"/></g>
+${o.item}
+<ellipse cx="70" cy="58" rx="52" ry="54" fill="${o.hij}"/>
+<ellipse cx="70" cy="64" rx="36" ry="33" fill="#ffd9b8"/>
+<ellipse class="eye" cx="55" cy="62" rx="4.5" ry="6" fill="#2b1b12"/><ellipse class="eye" cx="85" cy="62" rx="4.5" ry="6" fill="#2b1b12"/>
+<circle cx="56.5" cy="59.5" r="1.6" fill="#fff"/><circle cx="86.5" cy="59.5" r="1.6" fill="#fff"/>
+<circle cx="45" cy="75" r="6" fill="#ff9aa2" opacity=".6"/><circle cx="95" cy="75" r="6" fill="#ff9aa2" opacity=".6"/>
+<ellipse class="mouth" cx="70" cy="79" rx="8" ry="5" fill="#c0392b"/>
+${o.acc}
+<g fill="none" stroke="#f5c04a" stroke-width="3" stroke-linecap="round"><path class="wave" d="M${o.wx} 70 q6 8 0 16"/><path class="wave" d="M${o.wx+8} 64 q9 14 0 28"/><path class="wave" d="M${o.wx+16} 58 q12 20 0 40"/></g></svg>`}
+$=id=>document.getElementById(id);
+$("figT").innerHTML=avatar({dress:"#8fc43a",hij:"#1e3f8f",hx:118,hy:118,wx:120,
+item:'<rect x="24" y="112" width="30" height="38" rx="5" fill="#fff" stroke="#e8893a" stroke-width="3"/><circle cx="39" cy="128" r="6" fill="#f5c04a"/><path d="M30 144h18" stroke="#4aa3e8" stroke-width="3"/>',
+acc:'<circle cx="104" cy="30" r="8" fill="#f5c04a"/><circle cx="104" cy="30" r="3" fill="#e8893a"/>'});
+$("figS").innerHTML=avatar({dress:"#f48fb1",hij:"#8aa57a",hx:30,hy:130,wx:-30,
+item:'<rect x="96" y="116" width="26" height="40" rx="8" fill="#e8893a"/>',
+acc:'<path d="M95 18 l5 10 11 1 -8 7 2 11 -10-6 -10 6 2-11 -8-7 11-1z" fill="#f5c04a" transform="translate(-2 -6) scale(.7)"/>'});
+const S=[
+{n:"1 Transisi",e:"🔄",items:[
+["Apa perbedaan terbesar yang kamu rasakan antara suasana belajar di MTs dan di Kelas 10 MA ini?","Di MTs lebih santai, banyak waktu tidurnya, temannya banyak. Di MA sedikit banget waktu istirahatnya, tugas banyak dari tahfiz, sekolah, Iksada, lomba."],
+["Apa tantangan atau hambatan terbesar yang kamu hadapi dalam 1–2 bulan pertama di kelas 10 ini?","Kesulitan manage waktu."],
+["Bagaimana cara kamu biasanya mengatasi rasa stres atau jenuh saat belajar?","Makan, main, atau belajar bareng teman biar stresnya bareng-bareng 😄"]]},
+{n:"2 Gaya Belajar",e:"🧠",items:[
+["Gaya belajar dominanmu yang mana?","Aku lebih mudah paham dengan melihat gambar, diagram, warna, atau membaca catatan.",["Visual","Auditori","Kinestetik"],0],
+["Mata pelajaran yang paling kamu sukai?","Fisika."],
+["Dan mata pelajaran yang paling menantang?","Fisikaaa juga 😅"],
+["Kegiatan ekstrakurikuler atau organisasi apa yang kamu ikuti atau minati?","Di sekolah: Kisara. Di luar sekolah: belum ada."]]},
+{n:"3 Target",e:"🎯",items:[
+["Berapa target rata-rata nilai rapor semester ini?","89."],
+["Langkah konkret apa untuk mencapainya?","Nggak malas belajar, aktif di kelas biar makin paham, dan belajar walaupun sedikit."],
+["Apa target non-akademik atau pengembangan dirimu?","Bisa speaking English dan belajar mengedit video atau media."],
+["Maukah kamu berkomitmen?","Saya berjanji akan berusaha sebaik mungkin untuk bertanggung jawab atas proses belajar saya sendiri, menjaga nama baik kelas dan sekolah, serta saling mendukung dengan teman sekelas. 🤝"]]},
+{n:"4 Curhat",e:"💌",items:[
+["Ruang curhat (rahasia): adakah hal pribadi, kesehatan, kendala belajar, sosial, atau ekonomi yang ingin kamu ceritakan?","Nggak bisa manage waktu."]]}];
+const flat=[];S.forEach((s,si)=>s.items.forEach(it=>flat.push({si,it})));
+let i=0,busy=false,timer=null;
+$("steps").innerHTML=S.map((s,k)=>`<div class="step" id="st${k}">${s.e} ${s.n}</div>`).join("")+`<div class="step" id="st${S.length}">📜 Rapor</div>`;
+function mark(a){for(let k=0;k<=S.length;k++)$("st"+k).className="step"+(k===a?" on":k<a?" done":"");$("bar").style.width=Math.round(i/flat.length*100)+"%"}
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function speak(say,fig,name,text,extra){
+ say.innerHTML=`<span class="nm">${name}</span><span class="tx"></span>`;say.classList.add("show");fig.classList.add("talk");
+ const tx=say.querySelector(".tx");
+ for(let c=1;c<=text.length;c++){tx.textContent=text.slice(0,c);if(c%3==0)say.scrollTop=say.scrollHeight;await wait(24)}
+ if(extra)tx.insertAdjacentHTML("afterend",extra);
+ fig.classList.remove("talk");
+}
+async function step(){
+ if(busy)return;if(i>=flat.length){rapor();return}
+ busy=true;$("next").disabled=true;
+ const {si,it}=flat[i];mark(si);
+ $("sayS").classList.remove("show");
+ await speak($("sayT"),$("figT"),"Bu Guru",it[0]);
+ await wait(350);
+ let ex="";if(it[2])ex=`<div class="chips">${it[2].map((c,k)=>`<span class="chip${k===it[3]?" ok":""}">${k===it[3]?"✓ ":""}${c}</span>`).join("")}</div>`;
+ await speak($("sayS"),$("figS"),"Faiza",it[1],ex);
+ i++;mark(i>=flat.length?S.length-1:flat[i].si);
+ $("next").textContent=i>=flat.length?"Lihat rapor 📜":"Lanjut →";$("next").disabled=false;busy=false;
+ if(i>=flat.length&&timer){clearInterval(timer);timer=null;$("auto").textContent="▶ Auto"}
+}
+function rapor(){
+ $("next").disabled=true;mark(S.length);$("bar").style.width="100%";
+ const d=document.createElement("div");d.className="rapor";
+ d.innerHTML=`<h2>📜 Rapor Perkenalan Faiza</h2><small style="color:var(--mu)">Ringkasan untuk Wali Kelas</small>
+ <div class="g"><div class="k"><b>89</b><span>Target rata-rata rapor</span></div><div class="k"><b>Visual 👀</b><span>Gaya belajar</span></div><div class="k"><b>Fisika ⚛️</b><span>Favorit sekaligus tantangan</span></div><div class="k"><b>Kisara</b><span>Ekstrakurikuler</span></div><div class="k"><b>Manajemen waktu ⏳</b><span>Tantangan utama (disebut 2x)</span></div><div class="k"><b>Game Dev 🎮</b><span>Cita-cita</span></div></div>
+ <p style="margin:14px 0 0"><b>Catatan tindak lanjut:</b> bantu Faiza menyusun jadwal harian (tahfiz, tugas, Iksada, lomba, istirahat), dukung belajar Fisika dengan diagram dan warna, serta arahkan ke latihan speaking English dan belajar editing video.</p>`;
+ $("out").appendChild(d);d.scrollIntoView({behavior:"smooth",block:"end"});
+}
+$("next").onclick=step;
+$("auto").onclick=()=>{if(timer){clearInterval(timer);timer=null;$("auto").textContent="▶ Auto";return}
+ $("auto").textContent="⏸ Jeda";step();timer=setInterval(()=>{if(!busy&&i<flat.length)step()},1200)};
+mark(0);
+
+</script></body></html>
